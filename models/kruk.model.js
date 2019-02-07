@@ -1,13 +1,6 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-let SymbolSchema = new Schema({
-  value: { type: String, required: true },
-  pitch: { type: String, required: true },
-  name: { type: String, required: true },
-  sounds: { type: Number, required: true },
-  opts: [Number]
-});
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 let KrukSchema = new Schema({
   name: { type: String, required: true },
