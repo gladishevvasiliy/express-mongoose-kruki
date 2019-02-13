@@ -1,11 +1,11 @@
-
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 let KrukSchema = new Schema({
   name: { type: String, required: true },
   symbols: [
     {
+      id: Number,
       value: { type: String },
       pitch: { type: String },
       name: { type: String },
