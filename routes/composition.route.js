@@ -14,4 +14,11 @@ router.post(
   product_controller.category_composition_create
 );
 
+router.put("/:id/add", product_controller.add_composition);
+
+router.put(
+  "/:categoryId/remove/:compositionId",
+  product_controller.remove_composition
+);
+
 module.exports = router;

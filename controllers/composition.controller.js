@@ -17,7 +17,7 @@ exports.get_all = function(req, res) {
 };
 
 exports.category_composition_create = function(req, res, next) {
-  console.log("newComposition");
+  console.log("new category of compositions");
   var newComposition = new Composition({
     name: req.body.name,
     compositions: req.body.compositions
@@ -29,4 +29,26 @@ exports.category_composition_create = function(req, res, next) {
     }
     res.send("Composition category created successfully");
   });
+};
+
+exports.add_composition = function(req, res, next) {
+  Composition.findByIdAndUpdate(
+    req.params.id,
+    { $push: { compositions: req.body } },
+    function(err) {
+      if (err) return next(err);
+      res.send("Composition added.");
+    }
+  );
+};
+
+exports.remove_composition = function(req, res, next) {
+  Composition.update(
+    { _id: req.params.categoryId },
+    { $pull: { compositions: { _id: req.params.compositionId } } },
+    function(err) {
+      if (err) return next(err);
+      res.send("Composition removed.");
+    }
+  );
 };
